@@ -1,0 +1,16 @@
+########## RF ##########
+RF best params: {'max_depth': 15, 'max_features': 7, 'min_samples_split': 8, 'n_estimators': 500}
+RMSE (After): 214.9493 (RF)
+
+########## GBM ##########
+GBM best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500, 'subsample': 0.7}
+RMSE (After): 205.1289 (GBM)
+
+########## LightGBM ##########
+LightGBM best params: {'colsample_bytree': 0.7, 'learning_rate': 0.01, 'n_estimators': 500}
+RMSE (After): 223.4899 (LightGBM)
+
+########## CatBoost ##########
+CatBoost best params: {'depth': 6, 'iterations': 500, 'learning_rate': 0.1}
+RMSE (After): 219.5299 (CatBoost)
+
