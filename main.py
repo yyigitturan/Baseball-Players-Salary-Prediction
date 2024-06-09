@@ -5,10 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.preprocessing import StandardScaler, RobustScaler
-
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_validate, cross_val_score, validation_curve
-
 from catboost import CatBoostRegressor
 from lightgbm import LGBMRegressor
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
@@ -27,13 +25,13 @@ pd.set_option('display.max_rows', None)
 df = pd.read_csv("hitters.csv")
 
 # ADVANCED FUNCTIONAL EDA
-# 1. Genel Resim
-# 2. Kategorik Değişken Analizi
-# 3. Sayısal Değişken Analizi
-# 4. Hedef Değişken Analizi
-# 5. Korelasyon Analizi
+# 1. Overall View
+# 2. Categorical Variable Analysis
+# 3. Numerical Variable Analysis
+# 4. Analysis of Target Variable
+# 5. Correlation Analysis
 
-# 1. Genel Resim
+# 1. Overall View
 
 def check_df(dataframe, head=5):
     print("##################### Shape #####################")
@@ -60,26 +58,25 @@ check_df(df)
 def grab_col_names(dataframe, cat_th=10, car_th=20):
     """
 
-    Veri setindeki kategorik, numerik ve kategorik fakat kardinal değişkenlerin isimlerini verir.
-    Not: Kategorik değişkenlerin içerisine numerik görünümlü kategorik değişkenler de dahildir.
-
+    Returns the names of categorical, numerical, and categorical cardinal variables in the dataset.
+    
     Parameters
     ------
         dataframe: dataframe
-                Değişken isimleri alınmak istenilen dataframe
+                The dataframe from which variable names are to be taken
         cat_th: int, optional
-                numerik fakat kategorik olan değişkenler için sınıf eşik değeri
+                Class threshold for numerical but categorical variables
         car_th: int, optinal
-                kategorik fakat kardinal değişkenler için sınıf eşik değeri
+                Class threshold for categorical but cardinal variables
 
     Returns
     ------
         cat_cols: list
-                Kategorik değişken listesi
+                List of categorical variables
         num_cols: list
-                Numerik değişken listesi
+                List of numerical variables
         cat_but_car: list
-                Kategorik görünümlü kardinal değişken listesi
+                List of categorical but cardinal variables
 
     Examples
     ------
@@ -90,9 +87,9 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 
     Notes
     ------
-        cat_cols + num_cols + cat_but_car = toplam değişken sayısı
-        num_but_cat cat_cols'un içerisinde.
-        Return olan 3 liste toplamı toplam değişken sayısına eşittir: cat_cols + num_cols + cat_but_car = değişken sayısı
+        cat_cols + num_cols + cat_but_car = total number of variables
+        num_but_cat is included in cat_cols.
+        The sum of the 3 returned lists is equal to the total number of variables: cat_cols + num_cols + cat_but_car = total number of variables
 
     """
 
@@ -106,10 +103,6 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
     cat_cols = cat_cols + num_but_cat
     cat_cols = [col for col in cat_cols if col not in cat_but_car]
 
-    # num_cols
-    num_cols = [col for col in dataframe.columns if dataframe[col].dtypes != "O"]
-    num_cols = [col for col in num_cols if col not in num_but_cat]
-
     print(f"Observations: {dataframe.shape[0]}")
     print(f"Variables: {dataframe.shape[1]}")
     print(f'cat_cols: {len(cat_cols)}')
@@ -120,7 +113,7 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 
 cat_cols, num_cols, cat_but_car = grab_col_names(df)
 
-# 2. Kategorik Değişken Analizi
+# 2. Categorical Variable Analysis
 
 def cat_summary(dataframe, col_name, plot=False):
     print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
@@ -134,7 +127,7 @@ def cat_summary(dataframe, col_name, plot=False):
 for col in cat_cols:
     cat_summary(df, col, plot=True)
 
-# 3. Sayısal Değişken Analizi
+# 3. Numerical Variable Analysis
 
 def num_summary(dataframe, numerical_col, plot=False):
 
@@ -159,10 +152,10 @@ def target_summary_with_cat(dataframe, target, categorical_col):
 for col in cat_cols:
     target_summary_with_cat(df, "Salary", col)
 
-# 5. Korelasyon Analizi
+# 5. Correlation Analysis
 
 def high_correlated_cols(dataframe, plot=False, corr_th=0.90):
-    numeric_df = dataframe.select_dtypes(include=['float64', 'int64'])  # Sayısal sütunları seç
+    numeric_df = dataframe.select_dtypes(include=['float64', 'int64'])  # Select numerical columns
     corr = numeric_df.corr()
     corr_matrix = corr.abs()
     upper_triangle_matrix = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool_))
@@ -191,6 +184,7 @@ def outlier_thresholds(dataframe, col_name, q1=0.25, q3=0.75):
     quartile3 = dataframe[col_name].quantile(q3)
     interquantile_range = quartile3 - quartile1
     up_limit = quartile3 + 1.5 * interquantile_range
+    low_limit = quartile1 - 1
     low_limit = quartile1 - 1.5 * interquantile_range
     return low_limit, up_limit
 
@@ -276,13 +270,13 @@ num_cols = [col for col in num_cols if col!="Salary"]
 df[num_cols] = StandardScaler().fit_transform(df[num_cols])
 
 def target_correlation_summary(dataframe, target, num_cols):
-    # Tüm sayısal değişkenlerin ve hedef değişkenin korelasyon matrisini hesaplayın
+    # Calculate the correlation matrix of all numerical variables and the target variable
     corr_matrix = dataframe[num_cols + [target]].corr()
 
-    # Hedef değişken ile diğer değişkenler arasındaki korelasyonları alın
+    # Get the correlations between the target variable and other variables
     target_corr = corr_matrix[target].sort_values(ascending=False)
 
-    # Korelasyonları bir DataFrame olarak döndürün
+    # Return the correlations as a DataFrame
     target_corr_df = pd.DataFrame(target_corr).reset_index()
     target_corr_df.columns = ['Feature', 'Correlation with Target']
 
@@ -485,8 +479,6 @@ rf_model = RandomForestRegressor(random_state=17)
 for i in range(len(rf_val_params)):
     val_curve_params(rf_model, X, y, rf_val_params[i][0], rf_val_params[i][1],scoring="neg_mean_absolute_error")
 
-rf_val_params[0][1]
+rf_val_params[0][1] 
 
-# Model Save
-import pickle
-pickle.dump(rf_final, open("hitters_final_model.pkl", 'wb'))
+
