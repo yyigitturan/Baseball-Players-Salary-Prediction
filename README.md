@@ -23,11 +23,7 @@ The project follows a structured methodology including:
 4. **Hyperparameter Tuning**: Fine-tuning model hyperparameters to improve predictive accuracy.
 5. **Model Evaluation**: Assessing model performance using metrics like RMSE (Root Mean Squared Error) and MAE (Mean Absolute Error).
 
-## Usage
-To replicate the analysis and train the model:
-1. Clone this repository to your local machine.
-2. Install the required dependencies listed in `requirements.txt`.
-3. Run the Jupyter Notebook `baseball_salary_prediction.ipynb` to execute the code and train the model.
+
 
 ## Results
 The trained machine learning model achieves an RMSE of [insert RMSE value] on the test data, demonstrating its effectiveness in predicting baseball player salaries based on their performance metrics.
