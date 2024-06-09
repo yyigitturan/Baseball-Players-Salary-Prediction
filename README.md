@@ -1,6 +1,6 @@
 # Baseball Players Salary Prediction 🎯
 
-![Baseball](imagine.jpg)
+![Baseball](images/baseball.jpg)
 
 ## Overview 💡
 This project aims to develop a machine learning model to predict the salaries of baseball players based on their past performance. The dataset used for this task includes statistics from the 1986-1987 season, sourced from Carnegie Mellon University's StatLib library. Various machine learning algorithms are employed to train the model and make accurate salary predictions.
@@ -37,24 +37,24 @@ The project follows a structured methodology including:
 5. **Hyperparameter Tuning**: Fine-tuning model hyperparameters to improve predictive accuracy.
 6. **Model Evaluation**: Assessing model performance using metrics like RMSE (Root Mean Squared Error) and MAE (Mean Absolute Error).
 
-
+## Results 📈
 
 ### Random Forest Regressor (RF) 🌲
 - RF best params: {'max_depth': 15, 'max_features': 7, 'min_samples_split': 8, 'n_estimators': 500}
 - RMSE (After): 214.9493 (RF)
 
 #### Feature Importance for Random Forest Regressor
-![RF Feature Importance](rf_feature_importance.png)
+![RF Feature Importance](images/randomforest_feature.png)
 
 #### Model Complexity for Random Forest Regressor
-![RF Model Complexity](rf_model_complexity.png)
+![RF Model Complexity](images/rf_model_complexity.png)
 
 ### Gradient Boosting Regressor (GBM) 🚀
 - GBM best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500, 'subsample': 0.7}
 - RMSE (After): 205.1289 (GBM)
 
 #### Feature Importance for Gradient Boosting Regressor
-![GBM Feature Importance](gbm_feature_importance.png)
+![GBM Feature Importance](images/gb_feature.png)
 
 #### Model Complexity for Gradient Boosting Regressor
 ![GBM Model Complexity](gbm_model_complexity.png)
@@ -64,7 +64,7 @@ The project follows a structured methodology including:
 - RMSE (After): 223.4899 (LightGBM)
 
 #### Feature Importance for LightGBM Regressor
-![LightGBM Feature Importance](lgbm_feature_importance.png)
+![LightGBM Feature Importance](images/lgbm_feature.png)
 
 #### Model Complexity for LightGBM Regressor
 ![LightGBM Model Complexity](lgbm_model_complexity.png)
@@ -74,7 +74,7 @@ The project follows a structured methodology including:
 - RMSE (After): 219.5299 (CatBoost)
 
 #### Feature Importance for CatBoost Regressor
-![CatBoost Feature Importance](catboost_feature_importance.png)
+![CatBoost Feature Importance](images/catboost_feature.png)
 
 #### Model Complexity for CatBoost Regressor
 ![CatBoost Model Complexity](catboost_model_complexity.png)
