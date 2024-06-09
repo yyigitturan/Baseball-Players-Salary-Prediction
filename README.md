@@ -39,22 +39,45 @@ The project follows a structured methodology including:
 
 
 
-## Results 📈
 ### Random Forest Regressor (RF) 🌲
 - RF best params: {'max_depth': 15, 'max_features': 7, 'min_samples_split': 8, 'n_estimators': 500}
 - RMSE (After): 214.9493 (RF)
+
+#### Feature Importance for Random Forest Regressor
+![RF Feature Importance](rf_feature_importance.png)
+
+#### Model Complexity for Random Forest Regressor
+![RF Model Complexity](rf_model_complexity.png)
 
 ### Gradient Boosting Regressor (GBM) 🚀
 - GBM best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500, 'subsample': 0.7}
 - RMSE (After): 205.1289 (GBM)
 
+#### Feature Importance for Gradient Boosting Regressor
+![GBM Feature Importance](gbm_feature_importance.png)
+
+#### Model Complexity for Gradient Boosting Regressor
+![GBM Model Complexity](gbm_model_complexity.png)
+
 ### LightGBM Regressor 🌟
 - LightGBM best params: {'colsample_bytree': 0.7, 'learning_rate': 0.01, 'n_estimators': 500}
 - RMSE (After): 223.4899 (LightGBM)
 
+#### Feature Importance for LightGBM Regressor
+![LightGBM Feature Importance](lgbm_feature_importance.png)
+
+#### Model Complexity for LightGBM Regressor
+![LightGBM Model Complexity](lgbm_model_complexity.png)
+
 ### CatBoost Regressor 🐱
 - CatBoost best params: {'depth': 6, 'iterations': 500, 'learning_rate': 0.1}
 - RMSE (After): 219.5299 (CatBoost)
+
+#### Feature Importance for CatBoost Regressor
+![CatBoost Feature Importance](catboost_feature_importance.png)
+
+#### Model Complexity for CatBoost Regressor
+![CatBoost Model Complexity](catboost_model_complexity.png)
 
 ### General Conclusion 🏁
 - **Gradient Boosting Regressor (GBM)** demonstrated the strongest predictive performance with the lowest RMSE value of 205.1289.
