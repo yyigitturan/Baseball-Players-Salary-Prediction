@@ -39,7 +39,7 @@ The project follows a structured methodology including:
 
 
 
-## Results
+## Results 📈
 ### Random Forest Regressor (RF) 🌲
 - RF best params: {'max_depth': 15, 'max_features': 7, 'min_samples_split': 8, 'n_estimators': 500}
 - RMSE (After): 214.9493 (RF)
@@ -56,7 +56,7 @@ The project follows a structured methodology including:
 - CatBoost best params: {'depth': 6, 'iterations': 500, 'learning_rate': 0.1}
 - RMSE (After): 219.5299 (CatBoost)
 
-### General Conclusion
+### General Conclusion 🏁
 - **Gradient Boosting Regressor (GBM)** demonstrated the strongest predictive performance with the lowest RMSE value of 205.1289.
 - **Random Forest Regressor (RF)** also showed competitive performance, achieving an RMSE of 214.9493.
 - **LightGBM** and **CatBoost Regressors** provided valuable insights into salary prediction despite slightly higher RMSE values.
