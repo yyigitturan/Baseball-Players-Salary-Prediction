@@ -59,7 +59,7 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
     """
 
     Returns the names of categorical, numerical, and categorical cardinal variables in the dataset.
-    
+
     Parameters
     ------
         dataframe: dataframe
@@ -93,7 +93,6 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 
     """
 
-
     # cat_cols, cat_but_car
     cat_cols = [col for col in dataframe.columns if dataframe[col].dtypes == "O"]
     num_but_cat = [col for col in dataframe.columns if dataframe[col].nunique() < cat_th and
@@ -102,6 +101,10 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
                    dataframe[col].dtypes == "O"]
     cat_cols = cat_cols + num_but_cat
     cat_cols = [col for col in cat_cols if col not in cat_but_car]
+
+    # num_cols
+    num_cols = [col for col in dataframe.columns if dataframe[col].dtypes != "O"]
+    num_cols = [col for col in num_cols if col not in num_but_cat]
 
     print(f"Observations: {dataframe.shape[0]}")
     print(f"Variables: {dataframe.shape[1]}")
@@ -155,7 +158,7 @@ for col in cat_cols:
 # 5. Correlation Analysis
 
 def high_correlated_cols(dataframe, plot=False, corr_th=0.90):
-    numeric_df = dataframe.select_dtypes(include=['float64', 'int64'])  # Select numerical columns
+    numeric_df = dataframe.select_dtypes(include=['float64', 'int64'])  # Sayısal sütunları seç
     corr = numeric_df.corr()
     corr_matrix = corr.abs()
     upper_triangle_matrix = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool_))
@@ -184,7 +187,6 @@ def outlier_thresholds(dataframe, col_name, q1=0.25, q3=0.75):
     quartile3 = dataframe[col_name].quantile(q3)
     interquantile_range = quartile3 - quartile1
     up_limit = quartile3 + 1.5 * interquantile_range
-    low_limit = quartile1 - 1
     low_limit = quartile1 - 1.5 * interquantile_range
     return low_limit, up_limit
 
@@ -270,13 +272,13 @@ num_cols = [col for col in num_cols if col!="Salary"]
 df[num_cols] = StandardScaler().fit_transform(df[num_cols])
 
 def target_correlation_summary(dataframe, target, num_cols):
-    # Calculate the correlation matrix of all numerical variables and the target variable
+    # Tüm sayısal değişkenlerin ve hedef değişkenin korelasyon matrisini hesaplayın
     corr_matrix = dataframe[num_cols + [target]].corr()
 
-    # Get the correlations between the target variable and other variables
+    # Hedef değişken ile diğer değişkenler arasındaki korelasyonları alın
     target_corr = corr_matrix[target].sort_values(ascending=False)
 
-    # Return the correlations as a DataFrame
+    # Korelasyonları bir DataFrame olarak döndürün
     target_corr_df = pd.DataFrame(target_corr).reset_index()
     target_corr_df.columns = ['Feature', 'Correlation with Target']
 
@@ -479,6 +481,4 @@ rf_model = RandomForestRegressor(random_state=17)
 for i in range(len(rf_val_params)):
     val_curve_params(rf_model, X, y, rf_val_params[i][0], rf_val_params[i][1],scoring="neg_mean_absolute_error")
 
-rf_val_params[0][1] 
-
-
+rf_val_params[0][1]
