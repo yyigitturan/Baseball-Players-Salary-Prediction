@@ -17,11 +17,12 @@ The dataset consists of 20 variables and 322 observations, with a total size of 
 
 ## Methodology
 The project follows a structured methodology including:
-1. **Data Preprocessing**: Handling missing values, outliers, and feature scaling.
-2. **Feature Engineering**: Creating new features based on existing ones to enhance model performance.
-3. **Model Selection**: Utilizing various machine learning algorithms such as Random Forest, Gradient Boosting, and CatBoost to train and evaluate the model.
-4. **Hyperparameter Tuning**: Fine-tuning model hyperparameters to improve predictive accuracy.
-5. **Model Evaluation**: Assessing model performance using metrics like RMSE (Root Mean Squared Error) and MAE (Mean Absolute Error).
+1. **Exploratory Data Analysis**:This stage involves examining the dataset in depth, including an overall view, analysis of categorical and numerical variables, assessment of the target variable, and correlation analysis.
+2. **Data Preprocessing**: Handling missing values, outliers, and feature scaling.
+3. **Feature Engineering**: Creating new features based on existing ones to enhance model performance.
+4. **Model Selection**: Utilizing various machine learning algorithms such as Random Forest, Gradient Boosting, and CatBoost to train and evaluate the model.
+5. **Hyperparameter Tuning**: Fine-tuning model hyperparameters to improve predictive accuracy.
+6. **Model Evaluation**: Assessing model performance using metrics like RMSE (Root Mean Squared Error) and MAE (Mean Absolute Error).
 
 
 
