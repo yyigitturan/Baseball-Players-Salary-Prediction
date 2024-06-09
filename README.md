@@ -1,8 +1,8 @@
-# Baseball Players Salary Prediction
+# Baseball Players Salary Prediction 🎯
 
 ![Baseball](imagine.jpg)
 
-## Overview
+## Overview 💡
 This project aims to develop a machine learning model to predict the salaries of baseball players based on their past performance. The dataset used for this task includes statistics from the 1986-1987 season, sourced from Carnegie Mellon University's StatLib library. Various machine learning algorithms are employed to train the model and make accurate salary predictions.
 
 ## Dataset
@@ -28,7 +28,7 @@ The dataset consists of 20 variables and 322 observations, with a total size of 
 - `Salary`: The player's salary for the 1986-1987 season (in thousands of dollars).
 - `NewLeague`: The league in which the player started the 1987 season, represented by factors A and N.
 
-## Methodology
+## Methodology 🛠️
 The project follows a structured methodology including:
 1. **Exploratory Data Analysis**:This stage involves examining the dataset in depth, including an overall view, analysis of categorical and numerical variables, assessment of the target variable, and correlation analysis.
 2. **Data Preprocessing**: Handling missing values, outliers, and feature scaling.
@@ -40,19 +40,19 @@ The project follows a structured methodology including:
 
 
 ## Results
-### Random Forest Regressor (RF)
+### Random Forest Regressor (RF) 🌲
 - RF best params: {'max_depth': 15, 'max_features': 7, 'min_samples_split': 8, 'n_estimators': 500}
 - RMSE (After): 214.9493 (RF)
 
-### Gradient Boosting Regressor (GBM)
+### Gradient Boosting Regressor (GBM) 🚀
 - GBM best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500, 'subsample': 0.7}
 - RMSE (After): 205.1289 (GBM)
 
-### LightGBM Regressor
+### LightGBM Regressor 🌟
 - LightGBM best params: {'colsample_bytree': 0.7, 'learning_rate': 0.01, 'n_estimators': 500}
 - RMSE (After): 223.4899 (LightGBM)
 
-### CatBoost Regressor
+### CatBoost Regressor 🐱
 - CatBoost best params: {'depth': 6, 'iterations': 500, 'learning_rate': 0.1}
 - RMSE (After): 219.5299 (CatBoost)
 
@@ -66,7 +66,7 @@ The project follows a structured methodology including:
 
 
 
-## Future Work
+## Future Work 🔮
 Potential areas for future improvement and exploration include:
 - Experimenting with additional machine learning algorithms.
 - Incorporating more recent baseball player data to enhance model generalization.
@@ -74,6 +74,6 @@ Potential areas for future improvement and exploration include:
 
 
 
-## License
+## License 📜
 This project is licensed under the [MIT License](LICENSE).
 
