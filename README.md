@@ -34,9 +34,7 @@ Potential areas for future improvement and exploration include:
 - Incorporating more recent baseball player data to enhance model generalization.
 - Exploring advanced feature engineering techniques to extract more meaningful insights from the data.
 
-## Contributors
-- John Doe (john.doe@example.com)
-- Jane Smith (jane.smith@example.com)
+
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
