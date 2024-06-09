@@ -445,7 +445,7 @@ plot_importance(catboost_final, X)
 
 ################################################
 # Analyzing Model Complexity with Learning Curves
-# ################################################
+#################################################
 
 def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc", cv=10):
     train_score, test_score = validation_curve(
