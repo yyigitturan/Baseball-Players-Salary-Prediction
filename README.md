@@ -47,7 +47,7 @@ The project follows a structured methodology including:
 ![RF Feature Importance](images/randomforest_feature.png)
 
 #### Model Complexity for Random Forest Regressor
-![RF Model Complexity](images/rf_model_complexity.png)
+![RF Model Complexity](images/rf_validation.png)
 
 ### Gradient Boosting Regressor (GBM) 🚀
 - GBM best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500, 'subsample': 0.7}
@@ -57,7 +57,7 @@ The project follows a structured methodology including:
 ![GBM Feature Importance](images/gb_feature.png)
 
 #### Model Complexity for Gradient Boosting Regressor
-![GBM Model Complexity](gbm_model_complexity.png)
+![GBM Model Complexity](gb_validation.png)
 
 ### LightGBM Regressor 🌟
 - LightGBM best params: {'colsample_bytree': 0.7, 'learning_rate': 0.01, 'n_estimators': 500}
