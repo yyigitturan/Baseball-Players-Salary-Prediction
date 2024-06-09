@@ -66,8 +66,6 @@ The project follows a structured methodology including:
 #### Feature Importance for LightGBM Regressor
 ![LightGBM Feature Importance](images/lgbm_feature.png)
 
-#### Model Complexity for LightGBM Regressor
-![LightGBM Model Complexity](lgbm_model_complexity.png)
 
 ### CatBoost Regressor 🐱
 - CatBoost best params: {'depth': 6, 'iterations': 500, 'learning_rate': 0.1}
@@ -76,8 +74,7 @@ The project follows a structured methodology including:
 #### Feature Importance for CatBoost Regressor
 ![CatBoost Feature Importance](images/catboost_feature.png)
 
-#### Model Complexity for CatBoost Regressor
-![CatBoost Model Complexity](catboost_model_complexity.png)
+
 
 ### General Conclusion 🏁
 - **Gradient Boosting Regressor (GBM)** demonstrated the strongest predictive performance with the lowest RMSE value of 205.1289.
